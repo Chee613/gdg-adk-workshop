@@ -1,0 +1,9 @@
+.env
+credentials.json
+token.json
+memory.json
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.adk/
