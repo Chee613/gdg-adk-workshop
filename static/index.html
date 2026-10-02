@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4285f4">
+  <title>Inbox Buddy · GDG Workshop</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#chat-input">Skip to assistant</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="GDG Workshop home"><img src="/assets/gdg-mark-reference.png" width="42" height="32" alt=""><span>GDG Workshop</span></a>
+      <nav aria-label="Workshop"><a href="/slides.html">Workshop slides</a><button id="new-session" class="button subtle" type="button" data-request disabled>New private session</button></nav>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="app-title">
+        <div class="intro-copy"><p class="intro-label">Your first agent, in action</p><h1 id="app-title">Meet Inbox Buddy.</h1><p>A little help with your inbox.<br>Read, ask, review. You stay in control.</p></div>
+        <img class="hero-art" src="/assets/inbox-hero.png" width="420" height="250" alt="A friendly miniature inbox assistant">
+      </section>
+
+      <section class="mode-banner" aria-label="Current mode">
+        <span id="mode-indicator" class="mode-dot" aria-hidden="true"></span>
+        <div class="mode-copy"><strong id="mode-title">Starting your private session…</strong><p id="mode-description">Loading the workshop inbox.</p></div>
+        <details class="mode-settings"><summary>Modes &amp; privacy</summary><div class="settings-content"><h2>Choose a mode on the server</h2><p><strong>Guided walkthrough:</strong> fictional email and scripted replies. No AI key or Gmail login.</p><p><strong>Sample + Gemini:</strong> real Google ADK agent. Fictional email text and your chat are sent to Gemini.</p><p><strong>Gmail + Gemini:</strong> connects to your Gmail. Retrieved email text and your chat are sent to Gemini. Saving a draft or applying a label requires your confirmation.</p><p>Set the mode and API key in the server’s <code>.env</code> file, then restart. See the <a href="https://github.com/Chee613/gdg-adk-workshop#setup" target="_blank" rel="noopener noreferrer">setup guide</a> for exact settings.</p><p>A new private session clears this conversation and its pending proposals. Gmail changes already approved remain in Gmail.</p></div></details>
+      </section>
+      <p id="error" class="error-banner" role="alert" hidden></p>
+
+      <div class="workspace" id="workspace" aria-busy="true">
+        <section class="inbox-pane" aria-labelledby="inbox-heading"><div class="pane-heading"><h2 id="inbox-heading">Inbox</h2><span class="count" id="email-count">—</span></div><p class="pane-caption" id="inbox-caption">Loading messages…</p><div class="email-list" id="email-list"><p class="empty-state">Your inbox will appear here.</p></div></section>
+
+        <section class="message-pane" aria-labelledby="message-heading"><div class="pane-heading"><h2 id="message-heading">Email preview</h2><span class="quiet-label">Read only</span></div><div id="email-preview" class="email-preview"><div class="empty-state"><h3>Take a look around.</h3><p>Select an email to read it, then ask Buddy for a hand.</p></div></div><div class="drafts-section"><div class="pane-heading"><h2 id="drafts-heading">Saved drafts</h2><span class="count" id="draft-count">0</span></div><p class="pane-caption" id="drafts-caption">Review and save a proposal to see it here.</p><div id="saved-drafts" aria-labelledby="drafts-heading"></div></div></section>
+
+        <section class="assistant-pane" aria-labelledby="assistant-heading"><div class="pane-heading assistant-heading"><div><h2 id="assistant-heading">Ask Buddy</h2><p class="pane-caption">A helpful second pair of eyes.</p></div><span class="buddy-dot" aria-hidden="true"></span></div><div class="conversation" id="conversation" role="log" aria-label="Conversation with Inbox Buddy" aria-live="polite" aria-relevant="additions text"><div class="chat-message assistant"><p class="speaker">Inbox Buddy</p><p>Hi! I can summarize your inbox, spot what needs attention, or help draft a reply. You review each draft before it’s saved.</p></div></div><div class="suggestions" aria-label="Suggested prompts"><button type="button" data-prompt data-request disabled>Summarize my inbox</button><button type="button" data-prompt data-request disabled>What needs my attention?</button><button type="button" data-prompt data-request disabled>Draft a reply to the interview email</button><button type="button" data-prompt data-request disabled>Remember: keep replies concise</button></div><div id="pending-actions" class="pending-actions" aria-label="Actions to review"></div><form id="chat-form" class="chat-form"><label for="chat-input">What would you like help with?</label><textarea id="chat-input" rows="2" maxlength="4000" placeholder="Ask about your inbox…" required disabled></textarea><div class="composer-bottom"><span id="request-status" role="status" aria-live="polite">Connecting…</span><button class="button primary" type="submit" id="ask-button" data-request disabled>Ask Buddy</button></div></form><details class="preferences"><summary>What Buddy remembers</summary><div id="preferences" class="preferences-body">No preferences saved yet.</div></details></section>
+      </div>
+    </main>
+    <footer><span>Built for learning. Drafts are never sent by this app.</span><div><a href="https://github.com/Chee613/gdg-adk-workshop" target="_blank" rel="noopener noreferrer">Workshop code</a><span>Adapted from <a href="https://github.com/scspai/adk-email-agent" target="_blank" rel="noopener noreferrer">SCSP Email Agent</a> · <a href="https://adk.dev/" target="_blank" rel="noopener noreferrer">Google ADK</a></span></div></footer>
+  </div>
+</body>
+</html>
